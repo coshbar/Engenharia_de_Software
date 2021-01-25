@@ -39,6 +39,11 @@ pip install oauth2
 
 ## Usage
 
+Go to the downloaded folder in the command prompt and run the following command:
+```sh
+python spreadsheet.py
+```
+
 Made to be used with this [spreadsheet](https://docs.google.com/spreadsheets/d/183VzN7dnwCIo8lFxcfE__auRLibBGg91WyhpiiGO9jE/edit?usp=sharing)
 
 ## License
