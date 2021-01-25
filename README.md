@@ -4,10 +4,6 @@
 
 * [Python](https://python.org)
 
-Installing used libraries
-pip install gspread
-pip install oauth2
-
 ### Installation
 
 Installing Python
@@ -33,6 +29,14 @@ Run the following command:
 python get-pip.py
 ```
 Pip should now be installed successfully.
+
+Installing libraries
+```sh
+pip install gspread
+```
+```sh
+pip install oauth2
+```
 
 ## Usage
 
