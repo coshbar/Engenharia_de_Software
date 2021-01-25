@@ -39,7 +39,7 @@ pip install oauth2
 
 ## Usage
 
-Go to the downloaded folder in the command prompt and run the following command:
+Open a command prompt and navigate to the folder containing the downloaded project and run the following command:
 ```sh
 python spreadsheet.py
 ```
