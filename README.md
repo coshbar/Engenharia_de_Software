@@ -6,34 +6,33 @@
 
 ### Installation
 
-Installing Python
-Step 1.
-Download and execute the latest Python installation package from Python.org.
+#### Installing Python
 
-Step 2.
-Choose the recommended installation options for the simplest installation experience.
+1. Download and execute the latest Python installation package from Python.org.
 
-Step 3.
-Check the box for “Add Python 3.7 to PATH”. This will adjust your System Environment Variables automatically so that Python can be launched from any command prompt.
+2. Choose the recommended installation options for the simplest installation experience.
 
-Installing Pip on Windows
-Step 1.
-Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer.
+3. Check the box for “Add Python 3.7 to PATH”. This will adjust your System Environment Variables automatically so that Python can be launched from any command prompt.
 
-Step 2.
-Open a command prompt and navigate to the folder containing the get-pip.py installer.
+#### Installing Pip on Windows
 
-Step 3.
-Run the following command:
+1. Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer.
+
+2. Open a command prompt and navigate to the folder containing the get-pip.py installer.
+
+3. Run the following command:
 ```sh
 python get-pip.py
 ```
 Pip should now be installed successfully.
 
-Installing libraries
+#### Installing libraries
+
+* gspread
 ```sh
 pip install gspread
 ```
+* oauth2
 ```sh
 pip install oauth2
 ```
