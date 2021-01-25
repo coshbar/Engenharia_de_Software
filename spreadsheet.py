@@ -10,30 +10,28 @@ sheet = client.open("Engenharia de Software - Desafio Gabriel Klimczak").sheet1
 #getting all data into a list
 sheet_list = sheet.get_all_values()
 
+#cell location
+cell_id = sheet.find("Matricula")
+cell_nonattendance = sheet.find("Faltas")
+cell_p1 = sheet.find("P1")
+cell_p2 = sheet.find("P2")
+cell_p3 = sheet.find("P3")
+cell_situation = sheet.find("Situação")
+cell_naf = sheet.find("Nota para Aprovação Final")
+
 #get the total number of lectures in the semester
 lecture_number = sheet_list[1]
 lecture_number = int(''.join(filter(str.isdigit, lecture_number[0])))
 
-#determinates where the student data starts
-start_student = 3
-
-#columns for specific data
-nonattendance_location = 2
-p1_location = 3
-p2_location = 4
-p3_location = 5
-situation_location = 7
-naf_location = 8
-
 #row for cell update
-row = 4
+row = cell_id.row + 1
 
-for student in sheet_list[start_student::]:
+for student in sheet_list[cell_id.row::]:
 	#checks if student has less than 75% attendance
-	if int(student[nonattendance_location]) > lecture_number * 0.25:
+	if int(student[cell_nonattendance.col - 1]) > lecture_number * 0.25:
 		#do stuff: Reprovado por Falta
-		sheet.update_cell(row, situation_location, 'Reprovado por Falta')
-		sheet.update_cell(row, naf_location, '0')
+		sheet.update_cell(row, cell_situation.col, 'Reprovado por Falta')
+		sheet.update_cell(row, cell_naf.col, '0')
 		
 		#cmd log
 		print('Reprovado por Falta')
@@ -41,33 +39,30 @@ for student in sheet_list[start_student::]:
 		#move to next row
 		row += 1
 	else:
-		m = (int(student[p1_location]) + int(student[p2_location]) + int(student[p3_location])) / 3
-		
+		m = (int(student[cell_p1.col - 1]) + int(student[cell_p2.col - 1]) + int(student[cell_p3.col - 1])) / 3
 		if m < 50:
 			#do stuff: Reprovado por Nota
-			sheet.update_cell(row, situation_location, 'Reprovado por Nota')
-			sheet.update_cell(row, naf_location, '0')
+			sheet.update_cell(row, cell_situation.col, 'Reprovado por Nota')
+			sheet.update_cell(row, cell_naf.col, '0')
 		
 			#cmd log
 			print('Reprovado por Nota')
 		elif 50 <= m < 70:
 			#do stuff: Exame Final
 			naf = 50 * 2 - m
-			sheet.update_cell(row, situation_location, 'Exame Final')
-			sheet.update_cell(row, naf_location, math.ceil(naf))
+			sheet.update_cell(row, cell_situation.col, 'Exame Final')
+			sheet.update_cell(row, cell_naf.col, math.ceil(naf))
 		
 			#cmd log
-			print(math.ceil(naf))
+			print('Exame Final', math.ceil(naf))
 		else:
 			#do stuff: Aprovado
-			sheet.update_cell(row, situation_location, 'Aprovado')
-			sheet.update_cell(row, naf_location, '0')
+			sheet.update_cell(row, cell_situation.col, 'Aprovado')
+			sheet.update_cell(row, cell_naf.col, '0')
 					
 			#cmd log
 			print('Aprovado')
 
 		#move to next row
-		row += 1
-
-			
+		row += 1			
 		
